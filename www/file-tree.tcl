@@ -10,6 +10,8 @@ ad_page_contract {
     @cvs-id  $Id$
 }
 
+fm_check_permission
+
 proc get_dirs { path } {
 
   set files [list]

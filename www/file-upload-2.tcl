@@ -13,6 +13,8 @@ ad_page_contract {
     {title:trim,notnull}
 }
 
+fm_check_permission
+
 set the_file [ns_queryget the_file.tmpfile]
 
 # Make sure the incoming filename is valid

@@ -8,6 +8,8 @@ ad_page_contract {
     {path}
 }
 
+fm_check_permission
+
 # check for image files and redirect to the upload page
 
 if [string match "image/*" [ns_guesstype [file tail $path]]] {

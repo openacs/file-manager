@@ -10,6 +10,8 @@ ad_page_contract {
 } {
 }
 
+fm_check_permission
+
 doc_return  200 text/html "
 <html>
 <head>

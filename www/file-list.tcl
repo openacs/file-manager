@@ -9,6 +9,8 @@ ad_page_contract {
     {path ""}
 }
 
+fm_check_permission
+
 set output "
 [ad_admin_header "File Manager"]
 
