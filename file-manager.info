@@ -12,9 +12,11 @@
         <database>postgresql</database>
     </database-support>
         <owner url="mailto:ron@arsdigita.com">Ron Henderson</owner>
-        <summary>A lightweight content-management application</summary>
+        <summary>lightweight file-system based content-management application</summary>
         <release-date>2001-01-26</release-date>
         <vendor url="http://www.arsdigita.com/">ArsDigita Corporation</vendor>
+        <description format="text/html">Provides a simple interface to upload and modify documents directly in the filesystem.  An alternative to ftp 
+which uses the built in authentication of OpenACS.</description>
 
         <requires url="acs-kernel" version="4.6.2"/>
         <requires url="version-control" version="4.0d"/>
