@@ -104,18 +104,11 @@ if {[regexp -nocase -- {\.adp} $path]} {
 if [ad_parameter VersionControlP file-manager 0] {
 
     # get the editor's name and email address for the log
-    set user_id [ad_verify_and_get_user_id]
-
-    db_1row user_info { 
-	select pe.first_names || ' ' || pe.last_name as name,
-	       pa.email
-	from   persons pe, parties pa
-	where  pe.person_id=pa.party_id and pa.party_id = :user_id
-    } 
+    acs_user::get -user_id [ad_conn user_id] -array user_info
 
     # add the file (just in case) and commit the change
     vc_add    $path
-    vc_commit $path "$name ($email) - $message"
+    vc_commit $path "$user_info(name) ($user_info(email)) - $message"
 }
 
 ad_returnredirect "file-list?path=[file dirname $path]"
