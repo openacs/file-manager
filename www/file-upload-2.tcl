@@ -35,7 +35,7 @@ set path [file join $path $title]
 
 # Check the file type
 
-set file_type [exec /bin/file $the_file] 
+set file_type [exec file $the_file] 
 
 # If the file is text then read it, strip carriage returns,
 # and write to the destination path
