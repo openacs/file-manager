@@ -27,7 +27,7 @@ if [empty_string_p $path] {
 
 if {$errcnt} {
     ad_return_complaint $errcnt $errmsg
-    return
+    ad_script_abort
 }
 
 if [catch {
@@ -41,9 +41,9 @@ if [catch {
     
 } errmsg] {
     ad_return_complaint 1 "<li> The follow error occured: <br> $errmsg"
-    return
+    ad_script_abort
 }
 
 ad_returnredirect "file-list?path=[file dirname $path]"
-return
+
 

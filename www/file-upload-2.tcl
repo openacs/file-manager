@@ -19,7 +19,7 @@ set the_file [ns_queryget the_file.tmpfile]
 
 if ![fm_valid_filename_p $title] {
     ad_return_complaint "<li>Invalid file name (no spaces, & or /'s)"
-    return
+    ad_script_abort
 }
 
 if {![empty_string_p $title] && [empty_string_p [file ext $title]]} {
@@ -55,7 +55,7 @@ if {[regexp -nocase -- {\.adp} $path]} {
 	
 	<pre>$errmsg</pre>
 	"
-	return
+        ad_script_abort
     }
     
     if {[fm_adp_function_p $text]} {
@@ -63,7 +63,7 @@ if {[regexp -nocase -- {\.adp} $path]} {
 	<P>We're sorry, but files edited with the file manager cannot
 	have functions in them for security reasons. Only HTML and 
 	<%= \$variable %> style code may be used."
-	return
+        ad_script_abort
     }
 } elseif [regexp {text} $file_type] {
 
@@ -81,7 +81,7 @@ if {[regexp -nocase -- {\.adp} $path]} {
 	
 	<pre>$errmsg</pre>
 	"
-	return
+        ad_script_abort
     }
     
     # for Windows
@@ -121,5 +121,4 @@ if [ad_parameter VersionControlP file-manager 0] {
 }
 
 ad_returnredirect "file-list?path=[file dirname $path]"
-return
 

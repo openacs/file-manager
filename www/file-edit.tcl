@@ -12,7 +12,7 @@ ad_page_contract {
 
 if [string match "image/*" [ns_guesstype [file tail $path]]] {
     ad_returnredirect file-upload?path=$path
-    return
+    ad_script_abort
 }
 
 # wrapper for reading a file

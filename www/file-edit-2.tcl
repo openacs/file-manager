@@ -15,7 +15,7 @@ ad_page_contract {
 
 if [empty_string_p $message] {
     ad_return_complaint 1 "<li> You must enter a log message"
-    return
+    ad_script_abort
 }
 
 # check to see if this is an adp page
@@ -27,7 +27,7 @@ if {[regexp {\.adp} $path]} {
 	<P> We're sorry, but files edited with the file manager cannot
 	have functions in them for security reasons. Only HTML and 
 	<%= \$variable %> style code may be used."
-	return
+        ad_script_abort
     }
 }
 
@@ -70,9 +70,9 @@ if [catch {
     $errmsg
   </pre>
   "
-  return
+  ad_script_abort
 }
 
 ad_returnredirect "file-list?path=[file dirname $path]"
-return
+
 
