@@ -49,12 +49,11 @@ if [catch {
 	set user_id [ad_verify_and_get_user_id]
 
 	db_1row user_info {
-            select first_names || ' ' || last_name as name, 
-                   email 
+            select pe.first_names || ' ' || pe.last_name as name, 
+                   pa.email 
             from persons pe, parties pa 
             where pe.person_id=:user_id and pa.party_id=pe.person_id
 	}
-	db_release_unused_handles
 
 	# add the file (just in case) and commit the change
 	vc_add    $path

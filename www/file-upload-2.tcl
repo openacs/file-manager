@@ -18,12 +18,12 @@ set the_file [ns_queryget the_file.tmpfile]
 # Make sure the incoming filename is valid
 
 if ![fm_valid_filename_p $title] {
-    ad_return_complaint "<li>Invalid file name (no spaces, & or /'s)"
+    ad_return_complaint "Error" "<li>Invalid file name (no spaces, & or /'s)"
     ad_script_abort
 }
 
 if {![empty_string_p $title] && [empty_string_p [file ext $title]]} {
-    ad_return_complaint "
+    ad_return_complaint "Error" "
     <li>The title you supply must have one of the following extensions:<br>
     [ad_parameter Extensions file-manager]"
     ad_script_abort
@@ -107,17 +107,15 @@ if [ad_parameter VersionControlP file-manager 0] {
     set user_id [ad_verify_and_get_user_id]
 
     db_1row user_info { 
-	select first_names || ' ' || last_name as name,
-	       email
-	from   users
-	where  user_id = :user_id
+	select pe.first_names || ' ' || pe.last_name as name,
+	       pa.email
+	from   persons pe, parties pa
+	where  pe.person_id=pa.party_id and pa.party_id = :user_id
     } 
 
     # add the file (just in case) and commit the change
     vc_add    $path
     vc_commit $path "$name ($email) - $message"
-
-    db_release_unused_handles
 }
 
 ad_returnredirect "file-list?path=[file dirname $path]"
