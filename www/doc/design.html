@@ -1,0 +1,176 @@
+<html>
+<title> File Manager Design Document </title>
+<body bgcolor=white>
+
+<h2>File Manager Design Document</h2>
+
+by <a href="mailto:ron@arsdigita.com">Ron Henderson</a> and <a href="mailto:jfinkler@arsdigita.com">Joshua Finkler</a>
+
+<hr>
+<h3>I.  Essentials: </h3>
+<ul>
+<li>user directory: none
+<li>data model: none
+<li><a href=requirements.html>Requirements document</a>
+<li><a href=coversheet.html>Cover Sheet</a>
+</ul>
+
+<h3>II.  Introduction: </h3>
+
+The ACS File Manager is a simple tool that allows content managers to
+work on a site even if they don't have access to the machine on which
+it runs via FTP or SSH login. Through the File Manager's Web-based
+user interface, text files can be edited using HTML forms and new
+versions of binary files - such as image files - can be uploaded,
+replacing prior versions.  If your site uses version control, then
+File Manager will also take care of recording all changes in the
+version control system.  In addition to editing existing files,
+content managers can also add new files to the system and create
+directories. <p>
+
+<h3>III. Historical Considerations </h3>
+
+In order that the File Manager application integrate properly in a
+professional development environment, provisions had to be made to
+ensure that version control constraints be respected and file access
+permissions be configurable at a high degree of specificity.
+
+<h3>IV. Competitive Analysis </h3>
+
+<p>The ACS File Manager is a lightweight content management tool.  It
+provides the mimimal functionality necessary for non-programmers to
+work on a site.  It's main limitations are fine-grain access control
+and access to the full revision history of an item.
+
+<h3>V.  Design tradeoffs</h3>
+
+Keep in mind that all file operations (uploads, edits, creating
+directories, etc.) are executed by the running AOLserver process. This
+means that permissions are determined by the umask of the
+corresponding account, usually nsadmin. As a minor security check,
+File Manager does not allow file names with /'s, spaces or &'s, making
+it more difficult for users to create files outside of the server's
+pageroot. <p>
+
+<h3>VI. Data Model</h3>
+
+The File Manager application has no data model.
+
+<h3>VII. Legal transactions</h3>
+
+The File Manager application has no data model and hence no legal
+transactions with the database.
+
+<h3>VIII. API </h3>
+
+File Manager is fully integrated with CVS (the version control
+system used by all ArsDigita development projects).  All CVS
+transactions are handled by the <a href=/doc/version-control>version
+control</a> application.  If you want to use version control in conjuction
+with a remote repository, make sure you follow the instructions for
+setting up access to a remote repository.<p>
+
+<h3>IX. User Interface</h3>
+
+<p>The user interface looks like a file browser.  It uses the following
+icons to indicate file status and type for various items under the
+server's pageroot:</p>  
+
+<blockquote>
+<table>
+
+<tr>
+<td><img src=pics/folder.gif></td>
+<td>Folder</td>
+</tr>
+
+<tr>
+<td><img src=pics/text.gif></td>
+<td>Editable text file</td>
+</tr>
+
+<tr>
+<td><img src=pics/image.gif></td>
+<td>Editable image file</td>
+</tr>
+
+<tr>
+<td><img src=pics/locked.gif></td>
+<td>Locked file, e.g. a file under version control with local
+modifications</td>
+</tr>
+
+<tr>
+<td><img src=pics/forbidden.gif></td>
+<td>Forbidden file that cannot be edited or uploaded using File
+Manager</td>
+</tr>
+
+</table>
+</blockquote>
+
+<p>You can click on text or image file icons to see a preview of the
+item, and you can click on file names to edit or upload new content.
+Clicking on a folder will navigate to that directory and display its
+contents.  Forbidden files cannot be operated on.
+
+<h3>X.  Configuration parameters</h3>
+
+The set of files and directories that content managers are allowed to
+work on can be configured in the parameters file.  The following set of parameters control the behavior of File
+Manager:
+
+<blockquote>
+<pre>
+[ns/server/yourservername/acs/file-manager]
+EnabledP=1
+; use version control?
+VersionControlP=1
+; extensions of files that be can edited/uploaded using File Manager
+Extensions=html,adp,jpg,gif
+; directories to ignore
+Ignore=admin,CVS
+; directories to manage (relative to www)
+ManagedDirectories=acs-examples,ads,graphics
+</pre>
+</blockquote>
+
+<p>The <code>VersionControlP</code> flag controls whether the version
+control application should be used to record all changes to files.
+The <code>Extensions</code> parameter is a list of file extensions
+that correspond to editable files.  The <code>Ignore</code> parameter
+lists directory names that should never appear in the file
+listing. The <code>ManagedDirectories</code> parameter controls which
+directories will be accessible via file-manager.  If you leave this
+parameter out then all directories will be available.</p>
+
+<h3>XI. Acceptance tests</h3>
+
+<p>You should test adding and editing a file:
+
+<ul>
+<li>Verify that file-manager is enabled in the ACS initialization
+file
+<li>Go to /admin/file-manager/ and select a directory
+<li>Add a file to the directory from your computer
+<li>Edit the contents of the file
+<li>Click the preview icon to verify the contents of the file
+</ul>
+
+<h3>XII. Future Improvements/Areas of Likely Change</h3>
+
+The ability to delete, rename, and move files and directories would be
+nice.  It would also be nice to have a fixed set of permissions from
+which to choose when constraining file access for different user groups.<p>
+
+<h3>XIII. Authors: </h3>
+
+<ul>
+<li>System creator: <a href="mailto:ron@arsdigita.com">Ron Henderson</a>
+<li>System owner: <a href="mailto:ron@arsdigita.com">Ron Henderson</a>
+<li>Documentation authors: <a href="mailto:ron@arsdigita.com">Ron Henderson</a> and 
+<a href="mailto:jfinkler@arsdigita.com">Joshua Finkler</a>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<html>
+<head>
+    <title>File Manager Application Requirements</title>
+</head>
+
+<body bgcolor=white>
+
+<h2>File Manager Application Requirements</h2>
+
+by <a href="mailto:ron@arsdigita.com">Ron Henderson</a> and <a href="mailto:jfinkler@arsdigita.com">Joshua Finkler</a>
+
+<hr>
+
+
+<h3>I. Introduction</h3>
+
+The following is a requirements document for the ACS File Manager application.
+
+<h3>II. Vision Statement</h3>
+
+Content managers often need to be able to work on a site without
+having access to or the knowledge to interface with such file-transfer
+programs as FTP, SCP, and the like.  The File Manager application
+will provide a Web-based user interface for uploading and editing text
+files and for uploading binary image and program files.  It will
+integrate with our current permissioning system and shall be fully CVS
+compliant so as to allow proper version control tracking for all file
+system changes.<p>
+
+<h3>III. System/Application Overview</h3>
+
+The File Manager system will emulate a file browser by using icons to
+indicate file status and type for each file handled by the system.
+The file types to be covered are: editable (text) file, editable
+(image) file, folder, locked file, and forbidden file.  <p>
+
+<h3>IV. Use-cases and User-scenarios</h3>
+
+<p>File Manager users will typically be HTML designers, graphic
+artists, and content editors who oversee text and graphics displayed
+on the site.  All users of the system must have site-wide
+administration privileges.
+
+<h3>V. Related Links</h3>
+
+<ul>
+  <li><a href=design.html>Design Document</a></li>
+  <li><a href=coversheet.html>Cover Sheet</a></li>
+</ul>
+
+<h3>VI.A Requirements: Data Model</h3>
+
+The File Manager application has no associated data model.
+
+<h3>VI.B Requirements: User-Level Requirements </h3>
+
+<ul>
+<li><b>20.10</b> User level functionality<p>
+    <b>20.10.10</b> Users can upload text or binary files <p>
+    <b>20.10.20</b> Users can edit text files via HTML forms<p>
+    <b>20.10.30</b> Users cannot gain access to locked files, i.e.,
+    files under version control that have undergone local modification<p>
+    <b>20.10.40</b> Users cannot overwrite or edit files outside of
+    their permission level<p>
+    <b>20.10.50</b> Users can click on a text or image file to see a
+    preview of that item<p>
+    <b>20.10.60</b> Users can click on file names to edit or upload
+    new content<p>
+    <b>20.10.70</b> Users can navigate within directory structure by
+    clicking on folder icons, as in a file browser.<p>
+</ul>
+
+<h3>VI.C Requirements: Version Control </h3>
+
+<ul>
+<li><b>30.10</b> Version Control <p>
+    <b>30.10.10</b> Application should be fully integrated with CVS<p>
+    <b>30.10.20</b> Application should allow the Version Control
+    application to handle all CVS transactions.<p>
+    <b>30.10.30</b> Application should provide a method for using
+    version control in conjunction with a remote repository.<p>
+</ul>
+
+<h3>VI.D Requirements: Permissions </h3>
+
+<ul>
+<li><b>40.10</b> Permissioning<p>
+    <b>40.10.10</b> Permissions should be determined by the umask of
+    the AOL account corresponding to the currently running AOLserver
+    process.<p>
+    <b>40.10.20</b> Application should not allow file names with "/"'s
+    or spaces, so as to make it more difficult for users to create
+    files outside of the server's pageroot.<p>
+</ul>
+
+<h3>VI.E Requirements: Configurable Behavior </h3>
+
+<ul>
+<li><b>50.10</b> Parameters<p>
+    <b>50.10.10</b> Application should allow on/off toggling of version
+    control<p>
+    <b>50.10.20</b> Application should allow specification of which
+    file types can be edited through the system<p>
+    <b>50.10.30</b> Application should be able to mask certain
+    directories from user<p>
+    <b>50.10.40</b> Directories to be managed should be prespecifiable
+    in the parameters file<p>
+</ul>
+
+<h3>VII. Implementation Notes</h3>
+
+The behavior of the File Manager application should be configurable
+via a set of parameters indicating: whether or not version control is
+to be enabled, any salient version control parameters if so, and those
+directories accessible via File Manager.<p>
+
+<h3>VII. Revision History</h3>
+
+<pre>
+$Log$
+Revision 1.1.1.1  2000/11/21 08:15:18  ron
+initial version
+
+</pre>
+
+<hr>
+<address><a href="mailto:jfinkler@arsdigita.com">Joshua Finkler</a></address>
+
+</body>
+</html>
+
