@@ -5,7 +5,7 @@ ad_page_contract {
     Process a file edit
 
     @author  ron@arsdigita.com
-    @created Fri May 26 06:47:06 2000
+    @creation-date Fri May 26 06:47:06 2000
     @cvs-id  $Id$
 } {
     {file_content:allhtml}

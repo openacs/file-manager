@@ -5,7 +5,7 @@ ad_page_contract {
     Create a subdirectory
 
     @author  ron@arsdigita.com
-    @created Fri May 26 07:19:06 2000
+    @creation-date Fri May 26 07:19:06 2000
     @cvs-id  $Id$
 } {
     {path:trim,notnull}

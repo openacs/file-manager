@@ -5,7 +5,7 @@ ad_library {
     Private tcl definitions for the file manager
 
     @author  Ron Henderson (ron@arsdigita.com)
-    @created Fri May 26 05:32:59 2000
+    @creation-date Fri May 26 05:32:59 2000
     @cvs-id  $Id$
 }
 

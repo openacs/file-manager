@@ -5,7 +5,7 @@ ad_page_contract {
     index page for file manager
 
     @author  Ron Henderson (ron@arsdigita.com)
-    @created Tue May 30 22:15:57 2000
+    @creation-date Tue May 30 22:15:57 2000
     @cvs-id  $Id$
 } {
 }

@@ -5,7 +5,7 @@ ad_page_contract {
     Process a file upload
 
     @author  ron@arsdigita.com
-    @created Fri May 26 06:39:29 2000
+    @creation-date Fri May 26 06:39:29 2000
     @cvs-id  $Id$
 } {
     {path:trim,notnull}

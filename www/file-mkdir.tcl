@@ -5,7 +5,7 @@ ad_page_contract {
     Add a new directory
 
     @author  ron@arsdigita.com
-    @created Fri May 26 07:14:13 2000
+    @creation-date Fri May 26 07:14:13 2000
     @cvs-id  $Id$
 } {
     {path:trim}

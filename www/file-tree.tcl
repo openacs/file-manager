@@ -6,7 +6,7 @@ ad_page_contract {
 
     @author  ron@arsdigita.com
     @author  karlg@arsdigita.com
-    @created Tue May 30 22:15:07 2000
+    @creation-date Tue May 30 22:15:07 2000
     @cvs-id  $Id$
 }
 

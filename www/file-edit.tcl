@@ -2,7 +2,7 @@
 
 ad_page_contract {
     @author  ron@arsdigita.com
-    @created June 2000
+    @creation-date June 2000
     @cvs-id  $Id$
 } {
     {path}

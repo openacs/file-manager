@@ -5,7 +5,7 @@ ad_page_contract {
     Upload a new file or replace existing file contents
 
     @author  ron@arsdigita.com
-    @created Fri May 26 06:12:27 2000
+    @creation-date Fri May 26 06:12:27 2000
     @cvs-id  $Id$
 } {
     {path:trim}
