@@ -23,10 +23,10 @@ if ![fm_valid_filename_p $title] {
 }
 
 if {![empty_string_p $title] && [empty_string_p [file ext $title]]} {
-    incr   errcnt
-    append errmsg "
+    ad_return_complaint "
     <li>The title you supply must have one of the following extensions:<br>
     [ad_parameter Extensions file-manager]"
+    ad_script_abort
 }
 
 # Done with error checking
