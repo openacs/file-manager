@@ -46,7 +46,7 @@ if [catch {
     if [ad_parameter VersionControlP file-manager 0] {
 
 	# get the editor's name and email address for the log
-	set user_id [ad_verify_and_get_user_id]
+	set user_id [ad_conn user_id]
 
 	db_1row user_info {
             select pe.first_names || ' ' || pe.last_name as name, 
