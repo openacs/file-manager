@@ -20,12 +20,12 @@ set the_file [ns_queryget the_file.tmpfile]
 # Make sure the incoming filename is valid
 
 if ![fm_valid_filename_p $title] {
-    ad_return_complaint "Error" "<li>Invalid file name (no spaces, & or /'s)"
+    ad_return_complaint 1 "<li>Invalid file name (no spaces, & or /'s)"
     ad_script_abort
 }
 
 if {![empty_string_p $title] && [empty_string_p [file ext $title]]} {
-    ad_return_complaint "Error" "
+    ad_return_complaint 1 "
     <li>The title you supply must have one of the following extensions:<br>
     [ad_parameter Extensions file-manager]"
     ad_script_abort
