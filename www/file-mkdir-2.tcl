@@ -12,6 +12,8 @@ ad_page_contract {
     {subdir:trim,notnull}
 }
 
+fm_check_permission
+
 set errcnt 0
 set errmsg ""
 

@@ -33,10 +33,17 @@ ad_proc fm_valid_filename_p { path } {
     }
 }
 
+ad_proc -private fm_check_permission {} { 
+    Require that the user have sitewide admin
+} { 
+    permission::require_permission -object_id [site_node::get_element -url / -element package_id] -privilege admin
+}
+
+
 ad_proc fm_admin_context_bar {} {
     Returns a context bar that will break out of the frames
 } {
-    regsub -all "href" [ad_admin_context_bar "File Manager"] "target=_top href" context_bar
+    regsub -all "href" [ad_context_bar {File Manager}] "target=_top href" context_bar
     return $context_bar
 }
 

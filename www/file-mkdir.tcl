@@ -11,6 +11,8 @@ ad_page_contract {
     {path:trim}
 }
 
+fm_check_permission
+
 doc_return  200 text/html "
 [ad_admin_header "File Manager"]
 
