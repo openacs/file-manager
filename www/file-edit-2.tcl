@@ -49,10 +49,10 @@ if [catch {
 	set user_id [ad_verify_and_get_user_id]
 
 	db_1row user_info {
-	    select first_names || ' ' || last_name as name,
-	           email
-	    from   users
-	    where  user_id = :user_id
+            select first_names || ' ' || last_name as name, 
+                   email 
+            from persons pe, parties pa 
+            where pe.person_id=:user_id and pa.party_id=pe.person_id
 	}
 	db_release_unused_handles
 
