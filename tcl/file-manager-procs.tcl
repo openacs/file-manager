@@ -36,7 +36,8 @@ ad_proc fm_valid_filename_p { path } {
 ad_proc -private fm_check_permission {} { 
     Require that the user have sitewide admin
 } { 
-    permission::require_permission -object_id [site_node::get_element -url / -element package_id] -privilege admin
+    array set node [site_node::get -url /]
+    ad_require_permission $node(package_id) admin
 }
 
 
