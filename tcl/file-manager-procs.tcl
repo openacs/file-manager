@@ -10,11 +10,15 @@ ad_library {
 }
 
 proc fm_pageroot_relative_path {path} {
+    set match ""
+    set local ""
     regexp "[ns_info pageroot](.+)" $path match local
     return $local
 }
 
 proc fm_acs_root_relative_path {path} {
+    set match ""
+    set relative ""
     regexp "[acs_root_dir](.+)" $path match relative
     return $relative
 }
