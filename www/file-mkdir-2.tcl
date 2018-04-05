@@ -40,9 +40,9 @@ if [catch {
     if [ad_parameter VersionControlP file-manager 0] {
 	vc_add $path
     }
-    
+
 } errmsg] {
-    ad_return_complaint 1 "<li> The follow error occured: <br> $errmsg"
+    ad_return_complaint 1 "<li> The follow error occurred: <br> $errmsg"
     ad_script_abort
 }
 
