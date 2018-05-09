@@ -14,7 +14,7 @@ fm_check_permission
 
 proc get_dirs { path } {
 
-  set files {}
+  set files [list]
 
   catch {
     foreach file [lsort [glob "$path/*"]] {

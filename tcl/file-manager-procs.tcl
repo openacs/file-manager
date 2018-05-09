@@ -51,7 +51,7 @@ ad_proc fm_admin_context_bar {} {
 ad_proc fm_options_list { args } {
     Returns an options list to be displayed in the upper-right part of the page
 } {
-    set choices {}
+    set choices [list]
     foreach arg $args {
 	lappend choices "<a href=\"[lindex $arg 0]\">[lindex $arg 1]</a>"
     }
@@ -78,7 +78,7 @@ proc fm_linked_path {path_full} {
         regexp "$pageroot/(.+)" $path_full match path
 
         set local ""
-        set path_list   {}
+        set path_list   [list]
         set path_orig   [file split $path]
         set path_length [expr [llength $path_orig]-1]
 
