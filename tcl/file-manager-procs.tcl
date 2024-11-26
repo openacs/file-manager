@@ -12,7 +12,7 @@ ad_library {
 proc fm_pageroot_relative_path {path} {
     set match ""
     set local ""
-    regexp "[ns_info pageroot](.+)" $path match local
+    regexp "[ns_server pagedir](.+)" $path match local
     return $local
 }
 
@@ -68,7 +68,7 @@ proc fm_linked_path {path_full} {
     # Grab the path relative to the pageroot and create a linked list
     # of path components for the top of the directory listing
 
-    set pageroot [ns_info pageroot]
+    set pageroot [ns_server pagedir]
 
     if [string equal -nocase $pageroot $path_full] {
         # we're at the top of the directory listing already

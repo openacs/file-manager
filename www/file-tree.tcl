@@ -65,7 +65,7 @@ proc print_dir { path } {
   set depth [expr $depth - 1]
 }
 
-set root  [ns_info pageroot]
+set root  [ns_server pagedir]
 set depth 0
 set output "
 <html>

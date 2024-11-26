@@ -98,7 +98,7 @@ if {[regexp -nocase -- {\.adp} $path]} {
     
 } else {
     # if the file is binary just copy it
-    ns_cp $the_file $path
+    file copy $the_file $path
 }
 
 # Register what we did with the version control system if necessary
